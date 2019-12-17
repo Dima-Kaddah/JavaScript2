@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>About Me</title>
+  <style>
+    .list-item {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>About Me</h1>
+
+  <ul>
+    <li>Nickname: <span id="nickname"></span></li>
+    <li>Favorite food: <span id="fav-food"></span></li>
+    <li>Hometown: <span id="hometown"></span></li>
+  </ul>
+</body>
+
+<script>
+  //set font family style to body
+  document.body.style.fontFamily = 'Arial, sans-serif';
+  //change some styles in body
+  document.body.style.margin = 'auto';
+  document.body.style.padding = '30px';
+  //get the span from id 
+  let nikName = document.getElementById('nickname');
+  let favFood = document.getElementById('fav-food');
+  let hometown = document.getElementById('hometown');
+  //set string value to the spans ids
+  nikName.innerText = "Doom";
+  favFood.innerText = "Pizza";
+  hometown.innerText = "Damascus";
+  //get all li and add class to them
+  let myList = document.querySelectorAll('ul li');
+  for (let i = 0; i < myList.length; i++) {
+    myList[i].classList.add('list-item')
+  }
+  let myImg = document.createElement('img');
+  //set some style for img
+  myImg.style.width = ('100%');
+  myImg.style.height = ('75vh');
+  //get img src
+  myImg.src = './2.jpg';
+  //display the img in body
+  document.body.appendChild(myImg);
+</script>
+
+</html>
