@@ -1,3 +1,4 @@
+'use strict';
 const books = [
   {
     title: 'The Design of Everyday Things',
@@ -34,5 +35,9 @@ books.forEach(function(getAlBooks) {
   if (getAlBooks.title === 'The Design of Everyday Things') {
     bookImg.src =
       'https://upload.wikimedia.org/wikipedia/en/3/33/The_Design_of_Everyday_Things_%28cover_1988%29.jpg';
-  } else bookImg.src = 'https://images.gr-assets.com/books/1295465264l/8884400.jpg';
+  } else if (getAlBooks.title === 'The Most Human Human') {
+    bookImg.src = 'https://images.gr-assets.com/books/1295465264l/8884400.jpg';
+  } else
+    bookImg.src =
+      'https://www.bridgiot.co.za/wp-content/uploads/2018/12/1024x1024-no-image-available.png';
 });
