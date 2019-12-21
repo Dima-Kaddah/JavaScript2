@@ -12,47 +12,45 @@
 </body>
 <script>
   'use strict'
-  let catImg = document.querySelector('img');
-  let toLeft = 0;
+  const theCat = document.querySelector('img');
+  const walkCat = 'http://www.anniemation.com/clip_art/images/cat-walk.gif';
+  const danceCat = 'https://media2.giphy.com/media/3mXcJgVhPxWZa/giphy.gif';
+  let toLeft = 0
+
   function catWalk() {
-    toLeft++
-    catImg.style.left = toLeft + 'px';
-    if (toLeft === 1020) {
-      toLeft = 0;
-    }
+    //50 millisecond 
+    setInterval(frame, 50)
+    function frame() {
+      //st the left between 1280 an -1280
+      toLeft = toLeft > 1280 ? -280 : toLeft;
 
-    function danceCat() {
-      if (toLeft === 640) {
-        catImg.src = './tenor.gif';
+      theCat.style.left = toLeft + 'px';
 
+      if (theCat.x === 650) {
+        //if it s not dance make it dance :D
+        if (theCat.src != danceCat) {
+          //time for dance 5second and go to left
+          setTimeout(() => { theCat.src = walkCat; toLeft += 10 }, 5000)
+          theCat.src = danceCat;
+
+        }
+      } else {
+        theCat.style.left;
+        toLeft += 10;
       }
     }
-    danceCat();
-    // setInterval(danceCat, 1000);
-
-    function stopDanceCat() {
-      if (toLeft === 700) {
-        catImg.src = "http://www.anniemation.com/clip_art/images/cat-walk.gif";
-      }
-    }
-    stopDanceCat();
-    // setInterval(stopDanceCat, 7000);
-
-
   }
   catWalk();
-  setInterval(catWalk, 50);
 
-
-// color background
+  // color background
   let bodyget = document.body;
   bodyget.style.backgroundColor = 'chartreuse';
   function changeColor() {
     if (bodyget.style.backgroundColor === 'chartreuse') {
       document.body.style.backgroundColor = 'red'
     } else if (bodyget.style.backgroundColor === 'red') {
-      document.body.style.backgroundColor = 'yellow'
-    } else if (bodyget.style.backgroundColor === 'yellow') {
+      document.body.style.backgroundColor = 'white'
+    } else if (bodyget.style.backgroundColor === 'white') {
       document.body.style.backgroundColor = 'blue'
     } else if (bodyget.style.backgroundColor === 'blue') {
       document.body.style.backgroundColor = 'orange'
