@@ -25,9 +25,8 @@ function timer(seconds) {
   const then = now + seconds * 1000;
 
   countDown = setInterval(function() {
-    seconds = Math.round((then - Date.now()) / 1000);
-
     if (seconds > 0) {
+      seconds--;
       finsh.innerText = '';
       displayTimerLeft(seconds);
     } else {
