@@ -7,6 +7,7 @@ const minCounter = document.getElementById('minCounter');
 const secCounter = document.getElementById('secCounter');
 const timerDisplay = document.querySelector('.timerDisplay');
 const endTimeDisplay = document.querySelector('.endTimer');
+const finsh = document.querySelector('.finsh');
 const play = document.getElementById('play');
 const stop = document.getElementById('stop');
 const form = document.custom;
@@ -24,17 +25,20 @@ function timer(seconds) {
   const then = now + seconds * 1000;
 
   countDown = setInterval(function() {
+    seconds = Math.round((then - Date.now()) / 1000);
+
     if (seconds > 0) {
-      seconds--;
+      finsh.innerText = '';
       displayTimerLeft(seconds);
     } else {
+      finsh.innerText = "Time's Up";
       clearInterval(countDown);
-      timerDisplay.textContent = `Time's Up`;
       finishAudio.play();
     }
   }, 1000);
   displayEndTime(then);
 }
+
 //display remain min and sec
 function displayTimerLeft(seconds) {
   const leftMinutes = Math.floor(seconds / 60);
