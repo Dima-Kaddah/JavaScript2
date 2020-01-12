@@ -1,0 +1,26 @@
+* {
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: calc(100% - 41px);
+}
+
+li {
+  width: calc(25% - 51px);
+  margin: 15px;
+  padding: 10px;
+  text-align: center;
+}
+.close {
+  display: none;
+}
+[src] {
+  width: 40%;
+}
