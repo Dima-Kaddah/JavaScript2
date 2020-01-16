@@ -1,5 +1,10 @@
 'use strict';
-document.getElementById('switchQ').addEventListener('click', showQuotes);
+let body = document.getElementById('body');
+let nextBtn = document.getElementById('switchQ');
+let icon = document.getElementById('icon');
+let icon2 = document.getElementById('icon2');
+let container = document.getElementById('container');
+nextBtn.addEventListener('click', showQuotes);
 let viewQuote = [];
 let quotes = [
   {
@@ -35,23 +40,19 @@ let quotes = [
 // make random color for the
 function randomColor() {
   let randomC;
-  let red = Math.floor(Math.random() * 256);
-  let blue = Math.floor(Math.random() * 256);
-  let orange = Math.floor(Math.random() * 256);
-  randomC = 'rgb(' + red + ',' + blue + ',' + orange + ')';
+  let intColor = Math.floor(Math.random() * Math.pow(2, 24));
+  let red = intColor >> 16;
+  let green = (intColor >> 8) & 255;
+  let blue = intColor & 255;
+  randomC = 'rgb(' + red + ',' + green + ',' + blue + ')';
   return randomC;
 }
 //function to get random quote object from quotes array
 function getRandomQuote() {
   const randomNum = Math.floor(Math.random() * quotes.length);
-  const spliceQ = quotes.splice(randomNum, 1)[0];
-  viewQuote.push(spliceQ);
-  if (quotes.length === 0) {
-    quotes = viewQuote;
-    viewQuote = [];
-  }
-  return spliceQ;
+  return quotes[randomNum];
 }
+
 function showQuote(quote) {
   //get the box of quote to get the two paragraph and show new quote
   const boxQuote = document.getElementById('quoteBox');
@@ -69,15 +70,10 @@ function showQuotes() {
   //call randomColor() the random color function
   randomColor();
   //Update background with new random color for
-  document.getElementById('body').style.backgroundColor = randomColor();
-
-  document.getElementById('switchQ').style.backgroundColor = document.getElementById(
-    'body',
-  ).style.backgroundColor;
-  document.getElementById('icon').style.backgroundColor = document.getElementById(
-    'body',
-  ).style.backgroundColor;
-  document.getElementById('icon2').style.backgroundColor = document.getElementById(
-    'body',
-  ).style.backgroundColor;
+  container.style.backgroundColor = randomColor();
 }
+let opacitySet = 0.7;
+body.style.opacity = 0.9;
+nextBtn.style.opacity = opacitySet;
+icon.style.opacity = opacitySet;
+icon2.style.opacity = opacitySet;

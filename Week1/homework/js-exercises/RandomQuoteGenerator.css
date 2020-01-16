@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: aqua;
+  background-color: seashell;
 }
 
 .quote {
@@ -50,11 +50,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.container {
-  width: 70%;
-  background-color: seashell;
+#container {
+  width: 90%;
+  background-color: rgb(107, 113, 194);
   min-height: 60vh;
-  border-radius: 20%;
+  box-shadow: inset 0 0 20px 0px;
 }
 button {
   height: 60px;
