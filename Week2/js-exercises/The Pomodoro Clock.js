@@ -31,8 +31,11 @@ function timer(seconds) {
       displayTimerLeft(seconds);
     } else {
       finsh.innerText = "Time's Up";
+      session.textContent = 0;
       clearInterval(countDown);
       finishAudio.play();
+      upArrow.addEventListener('click', more);
+      downArrow.addEventListener('click', less);
     }
   }, 1000);
   displayEndTime(then);
@@ -86,6 +89,8 @@ function less() {
 function stopTimer() {
   clearInterval(countDown);
   audioClick.play();
+  upArrow.addEventListener('click', more);
+  downArrow.addEventListener('click', less);
 }
 
 //update seconds when back play it
@@ -99,6 +104,8 @@ function startTimer() {
   const seconds = upToDate();
   timer(seconds);
   audioClick.play();
+  upArrow.removeEventListener('click', more);
+  downArrow.removeEventListener('click', less);
 }
 
 //submit to play in the same number we pause
