@@ -10,7 +10,7 @@ class Bill {
 //UI Class : Handle UI Tasks
 class UI {
   static displayBills() {
-    const bills = Store.getBill();
+    const bills = Store.getBills();
     bills.forEach(bill => UI.addBillToList(bill));
   }
   static addBillToList(bill) {
@@ -31,10 +31,10 @@ class UI {
     }
   }
 
-  static showAlert(massage, className) {
+  static showAlert(message, className) {
     const div = document.createElement('div');
     div.className = `alert alert-${className}`;
-    div.appendChild(document.createTextNode(massage));
+    div.appendChild(document.createTextNode(message));
     const container = document.querySelector('.container');
     const form = document.querySelector('#bill-form');
     //to display it before the form
@@ -52,7 +52,7 @@ class UI {
 
 // Store Class: HandlesStorage
 class Store {
-  static getBill() {
+  static getBills() {
     let bills;
     if (localStorage.getItem(bills) === null) {
       bills = [];
@@ -63,12 +63,12 @@ class Store {
   }
 
   static addBill(bill) {
-    const bills = Store.getBill();
+    const bills = Store.getBills();
     bills.push(bill);
     localStorage.setItem('bills', bills);
   }
   static removeBill(tip) {
-    const bills = Store.getBill();
+    const bills = Store.getBills();
     bills.forEach((bill, index) => {
       if (bill.tip === tip) {
         bills.splice(index, 1);
@@ -104,7 +104,7 @@ document.querySelector('#bill-form').addEventListener('submit', e => {
     //Add bill to store
     Store.addBill(bill);
 
-    //Show success massage
+    //Show success message
     UI.showAlert('Bill Added', 'success');
 
     //Clear fields
@@ -119,6 +119,6 @@ document.querySelector('#bill-list').addEventListener('click', e => {
   //Remove Bill from Store
   Store.removeBill(e.target.parentElement.previousElementSibling.textContent);
 
-  //Show success massage
+  //Show success message
   UI.showAlert('Bill Removed', 'success');
 });
