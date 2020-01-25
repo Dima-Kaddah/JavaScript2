@@ -10,14 +10,22 @@ function removeDuplicates(anyArray2) {
       result.push(anyArray2[i]);
     }
   }
-  console.log(result);
+  return result;
 }
-removeDuplicates(letters);
-removeDuplicates(num);
+console.log(removeDuplicates(letters));
+console.log(removeDuplicates(num));
 
 //another easier solution
 function removeDuplicates2(anyArray) {
-  console.log([...new Set(anyArray)]);
+  return [...new Set(anyArray)];
 }
-removeDuplicates2(letters);
-removeDuplicates2(num);
+console.log(removeDuplicates2(letters));
+console.log(removeDuplicates2(num));
+
+//third way with filter
+function removeDuplicates3(arr) {
+  arr = arr.filter((item, index) => arr.indexOf(item) === index);
+  return arr;
+}
+console.log(removeDuplicates3(letters));
+console.log(removeDuplicates3(num));
